@@ -47,7 +47,7 @@ namespace CCSANoteApp.Infrastructure
 
         public List<Note> FetchNoteByGroup(Guid userId, GroupName groupName)
         {
-            var _notes = notes.Where(x => x.NoteCreator == userId && x.Group == groupName);
+            var _notes = notes.Where(x => x.Id== userId && x.Group == groupName); //revisit
             return notes.ToList();
         }
 
