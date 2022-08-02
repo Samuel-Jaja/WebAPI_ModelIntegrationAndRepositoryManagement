@@ -1,1 +1,1 @@
-WebAPI_ModelIntegrationAndRepositoryManagement Project
+WebAPI_ModelIntegrationAndRepositoryManagement Project with ASP.NetCore6.0
