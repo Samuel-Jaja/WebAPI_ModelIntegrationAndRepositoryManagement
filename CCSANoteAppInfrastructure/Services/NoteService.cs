@@ -12,14 +12,14 @@ namespace CCSANoteApp.Infrastructure
             notes.Add(note);
         }
 
-        public void CreateNote(Guid userId, string title, string content, string groupName)
+        public void CreateNote(User creator, string title, string content, GroupName groupName)
         {
             notes.Add(new Note
             {
                 Title = title,
                 Content = content,
-                UserId = userId,
-                GroupName = groupName
+                NoteCreator = creator,
+                Group = groupName
             });
         }
 
@@ -45,9 +45,9 @@ namespace CCSANoteApp.Infrastructure
             return notes;
         }
 
-        public List<Note> FetchNoteByGroup(Guid userId, string groupName)
+        public List<Note> FetchNoteByGroup(Guid userId, GroupName groupName)
         {
-            var _notes = notes.Where(x => x.UserId == userId && x.GroupName == groupName);
+            var _notes = notes.Where(x => x.NoteCreator == userId && x.Group == groupName);
             return notes.ToList();
         }
 
@@ -57,9 +57,9 @@ namespace CCSANoteApp.Infrastructure
             return note;
         }
 
-        public List<Note> FetchNoteByUser(Guid id)
+        public List<Note> FetchNoteByUser(Guid creatorId)
         {
-            var _notes = notes.Where(x => x.UserId == id);
+            var _notes = notes.Where(x => x.NoteCreator.Id == creatorId);
             return notes.ToList();
         }
 
@@ -70,7 +70,7 @@ namespace CCSANoteApp.Infrastructure
             {
                 _note.Title = note.Title;
                 _note.Content = note.Content;
-                _note.GroupName = note.GroupName;
+                _note.Group = note.Group;
             }
         }
 
@@ -83,13 +83,13 @@ namespace CCSANoteApp.Infrastructure
             }
         }
 
-        public void UpdateNote(Guid id, string content, string groupName)
+        public void UpdateNote(Guid id, string content, GroupName groupName)
         {
             var _note = notes.FirstOrDefault(x => x.Id == id);
             if (_note != null)
             {
                 _note.Content = content;
-                _note.GroupName = groupName;
+                _note.Group = groupName;
 
             }
         }

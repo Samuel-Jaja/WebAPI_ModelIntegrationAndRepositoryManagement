@@ -18,7 +18,7 @@ namespace CCSA_Web.Controllers
         [HttpPost("create-note")]
         public IActionResult CreateNote([FromBody] NoteDto note)
         {
-            NoteService.CreateNote(note.creatorUserId, note.Title, note.Content, note.GroupName);
+            //NoteService.CreateNote(note.creatorUserId, note.Title, note.Content, note.GroupName);
             return Ok("Created Successfully");
         }
 
@@ -47,7 +47,7 @@ namespace CCSA_Web.Controllers
             return Ok(NoteService.FetchNote());
         }
         [HttpGet("notegroup")]
-        public IActionResult FetchNoteByGroup(Guid userId, string groupName)
+        public IActionResult FetchNoteByGroup(Guid userId, GroupName groupName)
         {
             return Ok(NoteService.FetchNoteByGroup(userId,groupName));
         }

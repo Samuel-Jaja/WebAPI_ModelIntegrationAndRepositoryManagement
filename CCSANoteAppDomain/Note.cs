@@ -13,21 +13,13 @@ namespace CCSANoteApp.Domain
             {
                 Id = Guid.NewGuid();
             }
-            public Guid Id { get; set; }
-            public Guid UserId { get; set; }
-            public string Title { get; set; }
-            public string Content { get; set; }
-            public string GroupName { get; set; }
-            public DateTime CreatedDate { get; set; } = DateTime.Now;
-            public DateTime UpdatedDate { get; set; } = DateTime.Now;
+            public virtual Guid Id { get; set; }
+            public virtual User NoteCreator { get; set; }
+            public virtual string Title { get; set; }
+            public virtual string Content { get; set; }
+            public virtual GroupName Group { get; set; }
+            public virtual DateTime CreatedDate { get; set; } = DateTime.Now;
+            public virtual DateTime UpdatedDate { get; set; } = DateTime.Now;
         
-    }
-
-    public enum GroupName
-    {
-        Personal =0,
-        Public =1,
-        General = 2
-
     }
 }

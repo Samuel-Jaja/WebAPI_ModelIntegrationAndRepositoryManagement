@@ -6,8 +6,8 @@ namespace CCSANoteApp.Infrastructure
     {
         //C-R-U-D
         void CreateNote(Note note);
-        void CreateNote(Guid creatorUserId,string title, string content,string groupName);
-        void UpdateNote(Guid id, string content, string groupName);
+        void CreateNote(User creator,string title, string content,GroupName groupName);
+        void UpdateNote(Guid id, string content, GroupName groupName);
         void UpdateNote(Guid id, string content);
         void UpdateNoteTitle(Guid id, string title);
         void DeleteNote(Guid id);
@@ -15,6 +15,6 @@ namespace CCSANoteApp.Infrastructure
         List<Note> FetchNote();
         List<Note> FetchNoteByUser(Guid id);
         Note FetchNoteById(Guid id);
-        List<Note> FetchNoteByGroup(Guid userId, string groupName);
+        List<Note> FetchNoteByGroup(Guid userId, GroupName groupName);
     }
 }
